@@ -2,6 +2,9 @@
   "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
     "strict": true,
-    "noEmit": true
+    "noEmit": true,
+  },
+    "include": ["lab4.ts", "index.ts", "lab4.tests.ts", "types.ts"],
+    "exclude": ["node_modules"]
   }
-}
+

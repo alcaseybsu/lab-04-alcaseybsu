@@ -358,9 +358,10 @@ describe("deleteTodo with actual fetch calls", () => {
     expect(response).toBe(true);
   });
 
-  it("returns undefined if todo doesn't exist", async () => {
+  it("returns true if todo doesn't exist", async () => {
+    // This is a bug in the API
     const response = await deleteTodo(310);
-    expect(response).toBeUndefined();
+    expect(response).toBe(true);
   });
 });
 

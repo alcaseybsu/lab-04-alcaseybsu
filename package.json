@@ -1,5 +1,5 @@
 {
-  "name": "lab-04-template",
+  "name": "lab-04-alcaseybsu",
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
@@ -10,7 +10,8 @@
     "test-watch": "jest --watchAll"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "node-fetch": "^2.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.2",
@@ -20,6 +21,7 @@
     "@types/jest": "^29.5.4",
     "@types/lodash": "^4.14.201",
     "@types/node": "^20.9.0",
+    "@types/node-fetch": "^2.6.9",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
     "babel-jest": "^29.7.0",
