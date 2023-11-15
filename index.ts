@@ -17,16 +17,16 @@ import {
  * ```
  */
 
-getUser(3).then((result) => {
-  console.log("getUser(3) result:", result);
+getUser(8).then((result) => {
+  console.log("getUser(8) result:", result);
 });
 
-getUserTodos(9).then((result) => {
-  console.log("getUserTodos(9) result:", result);
+getUserTodos(8).then((result) => {
+  console.log("getUserTodos(8) result:", result);
 });
 
-getTodo(14).then((result) => {
-  console.log("getTodo(14) result:", result);
+getTodo(45).then((result) => {
+  console.log("getTodo() 45 result:", result);
 });
 
 createTodo({ title: "Make coffee", userId: 6, completed: true }).then(
