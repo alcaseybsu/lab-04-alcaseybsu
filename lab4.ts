@@ -8,35 +8,36 @@ function getTodo(id: number): Promise<Todo | undefined> {
   return fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
     .then(response => {
       if (!response.ok) {
-        throw new Error('HTTP error');
+        console.error('HTTP error');
+        return undefined;
       }
-      return response.json();
+      return response.json().catch(error => {
+        console.error('JSON error', error);
+        return undefined;
+      });
     })
     .catch(error => {
-      console.error(error);
+      console.error('Fetch error', error);
       return undefined;
     });
 }
  
 
 function deleteTodo(id: number): Promise<true | undefined> {
-  // fetch Todo and delete it
   return fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
     method: "DELETE",
   })
-  .then((response) => {
-    // if delete request succeeded, return true
+  .then(response => {
     if (response.ok) {
       console.log(`deleteTodo(${id})`);
       return true;
-    // otherwise, return undefined  
     } else {
-      console.error(`Delete ${id} failed: ${response.status}`);
+      console.error('HTTP error');
       return undefined;
     }
   })
-  .catch((error) => {
-    console.error('There was an error!', error);
+  .catch(error => {
+    console.error('Fetch error', error);
     return undefined;
   });
 }
@@ -51,13 +52,16 @@ function createTodo(newTodo: TodoFields): Promise<Todo | undefined> {
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error(`Create Todo failed: ${response.status}`);
+      console.error('HTTP error');
+      return undefined;
     }
-    console.log(`createTodo(${JSON.stringify(newTodo)})`);
-    return response.json();
+    return response.json().catch(error => {
+      console.error('JSON error', error);
+      return undefined;
+    });
   })
   .catch(error => {
-    console.error(error);
+    console.error('Fetch error', error);
     return undefined;
   });
 }
@@ -72,13 +76,16 @@ function replaceTodo(newTodo: Todo): Promise<Todo | undefined> {
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error(`Replace Todo failed: ${response.status}`);
+      console.error('HTTP error');
+      return undefined;
     }
-    console.log(`replaceTodo(${JSON.stringify(newTodo)})`);
-    return response.json();
+    return response.json().catch(error => {
+      console.error('JSON error', error);
+      return undefined;
+    });
   })
   .catch(error => {
-    console.error(error);
+    console.error('Fetch error', error);
     return undefined;
   });
 }
@@ -99,13 +106,16 @@ function updateTodo(
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error(`Update Todo failed: ${response.status}`);
+      console.error('HTTP error');
+      return undefined;
     }
-    console.log(`updateTodo(${id}, ${JSON.stringify(updatedTodo)})`);
-    return response.json();
+    return response.json().catch(error => {
+      console.error('JSON error', error);
+      return undefined;
+    });
   })
   .catch(error => {
-    console.error(error);
+    console.error('Fetch error', error);
     return undefined;
   });
 }
@@ -119,7 +129,7 @@ function getUserTodos(userId: number): Promise<Todo[] | undefined> {
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error(`Get User Todos failed: ${response.status}`);
+      return undefined;
     }
     console.log(`getUserTodos(${userId})`);
     return response.json();
@@ -137,14 +147,18 @@ function getUser(id: number): Promise<User | undefined> {
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error(`Get User failed: ${response.status}`);
+      return undefined;      
     }
     console.log(`getUser(${id})`);
     return response.json();
   })
   .catch(error => {
     console.error(error);
-    return undefined;
+    if (error.message.includes('404')) {
+      return undefined;
+    } else {
+      throw error;
+    }
   });
 }
 
