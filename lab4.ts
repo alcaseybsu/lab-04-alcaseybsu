@@ -1,5 +1,4 @@
 import { User, Todo, TodoFields, TodoOptionalFields } from "./types";
-//import fetch from "node-fetch";
 
 //const API_URL = "https://jsonplaceholder.typicode.com";
 

@@ -17,9 +17,5 @@ Canvas for the full specification and rubric.
 > Complete these tasks as part of the lab:
 <!-- prettier-ignore-end -->
 
-- [X] Put your name at the top of the README
-- [X] Replace the `YOUR-REPO-NAME-HERE` text above with the name of your
-      repository and when you push this to GitHub a badge should appear showing
-      "failing" or "passing" depending on the outcome of your last build. You
-      may delete this instruction once it is working.
+- [X] Put your name at the top of the README-
 - [X] Replace "lab-04-template" in [package.json](package.json)
