@@ -42,11 +42,11 @@ function deleteTodo(id: number): Promise<true | undefined> {
 }
 
 function createTodo(newTodo: TodoFields): Promise<Todo | undefined> {
-  return fetch(`https://jsonplaceholder.typicode.com/todos/`, {
+  return fetch(`https://jsonplaceholder.typicode.com/todos`, {
     method: "POST",
     body: JSON.stringify(newTodo),
     headers: {
-      "Content-type": "application/json; charset=UTF-8",
+      "Content-Type": "application/json",
     },
   })
   .then(response => {
@@ -70,7 +70,7 @@ function replaceTodo(newTodo: Todo): Promise<Todo | undefined> {
     method: "PUT",
     body: JSON.stringify(newTodo),
     headers: {
-      "Content-type": "application/json; charset=UTF-8",
+      "Content-Type": "application/json; charset=UTF-8",
     },
   })
   .then(response => {
@@ -100,12 +100,12 @@ function updateTodo(
     method: "PATCH",
     body: JSON.stringify(updatedTodo),
     headers: {
-      "Content-type": "application/json; charset=UTF-8",
+      'Content-Type': 'application/json',
     },
   })
   .then(response => {
     if (!response.ok) {
-      console.error('HTTP error');
+      console.error('HTTP error, status = ' + response.status);
       return undefined;
     }
     return response.json().catch(error => {
@@ -123,7 +123,7 @@ function updateTodo(
 // array if the user does not exist. This is OK, simply return
 // the empty array from this method. 
 function getUserTodos(userId: number): Promise<Todo[] | undefined> {
-  return fetch(`https://jsonplaceholder.typicode.com/users/${userId}/todos`, {
+  return fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`, {
     method: "GET",
   })
   .then(response => {
